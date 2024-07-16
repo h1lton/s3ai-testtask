@@ -48,7 +48,8 @@
 
 ## Usage:
 
-Run server
-```shell
-make run
-```
+1. Run server
+    ```shell
+    make run
+    ```
+2. [Open swagger](http://localhost:8080/swagger/)
