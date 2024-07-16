@@ -1,16 +1,14 @@
 package entity
 
-import "s3ai-testtask/internal/domain/interfaces"
-
 type Account struct {
 	id      string
 	balance float64
 }
 
-func NewAccount(id string, balance float64) interfaces.BankAccount {
+func NewAccount(id string) *Account {
 	return &Account{
 		id:      id,
-		balance: balance,
+		balance: 0,
 	}
 }
 
