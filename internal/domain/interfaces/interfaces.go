@@ -12,3 +12,9 @@ type ATMService interface {
 	Withdraw(id string, amount float64) error
 	GetBalance(id string) (float64, error)
 }
+
+type BankRepository interface {
+	GetAccount(id string) (BankAccount, bool)
+	CreateAccount() (BankAccount, error)
+	SaveAccount(account BankAccount)
+}
