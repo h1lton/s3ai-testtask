@@ -10,5 +10,5 @@ type ATMService interface {
 	CreateAccount() (string, error)
 	Deposit(id string, amount float64) error
 	Withdraw(id string, amount float64) error
-	GetBalance(id string) float64
+	GetBalance(id string) (float64, error)
 }

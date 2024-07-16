@@ -27,7 +27,7 @@ func (A *ATMService) Withdraw(id string, amount float64) error {
 	panic("implement me")
 }
 
-func (A *ATMService) GetBalance(id string) float64 {
+func (A *ATMService) GetBalance(id string) (float64, error) {
 	//TODO implement me
 	panic("implement me")
 }
