@@ -7,6 +7,8 @@ import (
 	"s3ai-testtask/internal/infrastructure/logger/sl"
 )
 
+var NotFoundError = errors.New("account not found")
+
 type BankService struct {
 	repo interfaces.AccountRepository
 }
@@ -30,7 +32,7 @@ func (s *BankService) CreateAccount() (string, error) {
 func (s *BankService) Deposit(accountId string, amount float64) error {
 	account, exist := s.repo.GetAccount(accountId)
 	if !exist {
-		return errors.New("account not found")
+		return NotFoundError
 	}
 
 	return account.Deposit(amount)
@@ -39,7 +41,7 @@ func (s *BankService) Deposit(accountId string, amount float64) error {
 func (s *BankService) Withdraw(accountId string, amount float64) error {
 	account, exist := s.repo.GetAccount(accountId)
 	if !exist {
-		return errors.New("account not found")
+		return NotFoundError
 	}
 
 	return account.Withdraw(amount)
@@ -48,7 +50,7 @@ func (s *BankService) Withdraw(accountId string, amount float64) error {
 func (s *BankService) GetBalance(accountId string) (float64, error) {
 	account, exist := s.repo.GetAccount(accountId)
 	if !exist {
-		return 0, errors.New("account not found")
+		return 0, NotFoundError
 	}
 
 	return account.GetBalance(), nil
