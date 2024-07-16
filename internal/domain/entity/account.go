@@ -42,6 +42,7 @@ func (a *Account) Withdraw(amount float64) error {
 	}
 
 	isLock := a.mu.TryLock()
+	defer a.mu.Unlock()
 	if !isLock {
 		return ErrLock
 	}
@@ -51,13 +52,12 @@ func (a *Account) Withdraw(amount float64) error {
 	}
 
 	a.balance -= amount
-	a.mu.Unlock()
 	return nil
 }
 
 func (a *Account) GetBalance() float64 {
 	a.mu.Lock()
 	balance := a.balance
-	defer a.mu.Unlock()
+	a.mu.Unlock()
 	return balance
 }
