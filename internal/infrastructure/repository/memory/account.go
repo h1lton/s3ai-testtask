@@ -13,7 +13,10 @@ type AccountRepository struct {
 }
 
 func NewAccountRepository() interfaces.AccountRepository {
-	return &AccountRepository{}
+	return &AccountRepository{
+		accounts: make(map[string]*entity.Account),
+		mu:       sync.Mutex{},
+	}
 }
 
 func (r *AccountRepository) GetAccount(id string) (interfaces.BankAccount, bool) {
