@@ -39,8 +39,3 @@ func (r *AccountRepository) CreateAccount() (string, error) {
 
 	return id, nil
 }
-
-func (r *AccountRepository) SaveAccount(account interfaces.BankAccount) {
-	//TODO implement me
-	panic("implement me")
-}
