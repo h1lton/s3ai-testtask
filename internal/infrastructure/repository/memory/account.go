@@ -20,8 +20,10 @@ func NewAccountRepository() interfaces.AccountRepository {
 }
 
 func (r *AccountRepository) GetAccount(id string) (interfaces.BankAccount, bool) {
-	//TODO implement me
-	panic("implement me")
+	r.mu.Lock()
+	account, ok := r.accounts[id]
+	r.mu.Unlock()
+	return account, ok
 }
 
 func (r *AccountRepository) CreateAccount() (string, error) {
