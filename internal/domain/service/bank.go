@@ -2,7 +2,9 @@ package service
 
 import (
 	"errors"
+	"log/slog"
 	"s3ai-testtask/internal/domain/interfaces"
+	"s3ai-testtask/internal/infrastructure/logger/sl"
 )
 
 type BankService struct {
@@ -16,7 +18,13 @@ func NewBankService(repo interfaces.AccountRepository) *BankService {
 }
 
 func (s *BankService) CreateAccount() (string, error) {
-	return "", errors.New("not implemented")
+	accountId, err := s.repo.CreateAccount()
+	if err != nil {
+		slog.Error("Error creating account in repository", sl.Err(err))
+		return "", errors.New("account creation failed")
+	}
+
+	return accountId, nil
 }
 
 func (s *BankService) Deposit(id string, amount float64) error {

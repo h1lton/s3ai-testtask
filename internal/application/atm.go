@@ -13,8 +13,12 @@ func NewATMService(bank *service.BankService) *ATMService {
 }
 
 func (a *ATMService) CreateAccount() (string, error) {
-	//TODO implement me
-	panic("implement me")
+	accountId, err := a.bank.CreateAccount()
+	if err != nil {
+		return "", err
+	}
+
+	return accountId, nil
 }
 
 func (a *ATMService) Deposit(id string, amount float64) error {

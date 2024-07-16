@@ -5,6 +5,7 @@ go 1.22
 require (
 	github.com/fatih/color v1.17.0
 	github.com/go-chi/chi/v5 v5.1.0
+	github.com/google/uuid v1.6.0
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 )
 
