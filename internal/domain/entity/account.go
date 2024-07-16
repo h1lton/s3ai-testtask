@@ -1,8 +1,11 @@
 package entity
 
+import "sync"
+
 type Account struct {
 	id      string
 	balance float64
+	mu      sync.Mutex
 }
 
 func NewAccount(id string) *Account {
