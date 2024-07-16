@@ -33,6 +33,7 @@ func TestAccountOperations(t *testing.T) {
 		{amount: 0.1, deposit: false, balance: 0.1, err: nil},
 		{amount: 0.2, deposit: false, balance: 0.1, err: ErrInsufficientFunds},
 		{amount: -0.1, deposit: false, balance: 0.1, err: ErrGreaterThanZero},
+		{amount: 0.1, deposit: false, balance: 0.0, err: nil},
 	}
 
 	for _, tc := range tt {

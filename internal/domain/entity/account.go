@@ -2,6 +2,7 @@ package entity
 
 import (
 	"errors"
+	"math"
 	"sync"
 )
 
@@ -11,7 +12,7 @@ var ErrInsufficientFunds = errors.New("insufficient funds")
 
 type Account struct {
 	id      string
-	balance float64
+	balance int64
 	mu      sync.Mutex
 }
 
@@ -22,16 +23,24 @@ func NewAccount(id string) *Account {
 	}
 }
 
+func (a *Account) floatToCents(f float64) int64 {
+	multiplied := f * 1000
+	rounded := math.Round(multiplied)
+	return int64(rounded)
+}
+
 func (a *Account) Deposit(amount float64) error {
 	if amount <= 0 {
 		return ErrGreaterThanZero
 	}
 
+	amountInCents := a.floatToCents(amount)
+
 	isLock := a.mu.TryLock()
 	if !isLock {
 		return ErrLock
 	}
-	a.balance += amount
+	a.balance += amountInCents
 	a.mu.Unlock()
 	return nil
 }
@@ -41,17 +50,19 @@ func (a *Account) Withdraw(amount float64) error {
 		return ErrGreaterThanZero
 	}
 
+	amountInCents := a.floatToCents(amount)
+
 	isLock := a.mu.TryLock()
 	defer a.mu.Unlock()
 	if !isLock {
 		return ErrLock
 	}
 
-	if amount > a.balance {
+	if amountInCents > a.balance {
 		return ErrInsufficientFunds
 	}
 
-	a.balance -= amount
+	a.balance -= amountInCents
 	return nil
 }
 
@@ -59,5 +70,5 @@ func (a *Account) GetBalance() float64 {
 	a.mu.Lock()
 	balance := a.balance
 	a.mu.Unlock()
-	return balance
+	return float64(balance) / 1000
 }
