@@ -45,3 +45,10 @@
 - `POST /accounts/{id}/deposit` - пополнение баланса.
 - `POST /accounts/{id}/withdraw` - снятие средств.
 - `GET /accounts/{id}/balance` - проверка баланса.
+
+## Usage:
+
+Run server
+```shell
+make run
+```
