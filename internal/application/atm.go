@@ -21,17 +21,17 @@ func (a *ATMService) CreateAccount() (string, error) {
 	return accountId, nil
 }
 
-func (a *ATMService) Deposit(id string, amount float64) error {
+func (a *ATMService) Deposit(accountId string, amount float64) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (a *ATMService) Withdraw(id string, amount float64) error {
+func (a *ATMService) Withdraw(accountId string, amount float64) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (a *ATMService) GetBalance(id string) (float64, error) {
+func (a *ATMService) GetBalance(accountId string) (float64, error) {
 	//TODO implement me
 	panic("implement me")
 }

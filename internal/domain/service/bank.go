@@ -27,14 +27,14 @@ func (s *BankService) CreateAccount() (string, error) {
 	return accountId, nil
 }
 
-func (s *BankService) Deposit(id string, amount float64) error {
+func (s *BankService) Deposit(accountId string, amount float64) error {
 	return errors.New("not implemented")
 }
 
-func (s *BankService) Withdraw(id string, amount float64) error {
+func (s *BankService) Withdraw(accountId string, amount float64) error {
 	return errors.New("not implemented")
 }
 
-func (s *BankService) GetBalance(id string) (float64, error) {
+func (s *BankService) GetBalance(accountId string) (float64, error) {
 	return 0, errors.New("not implemented")
 }
