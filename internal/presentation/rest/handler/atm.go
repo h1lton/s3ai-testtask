@@ -2,14 +2,11 @@ package handler
 
 import (
 	"encoding/json"
+	"github.com/go-chi/chi/v5"
 	"log/slog"
 	"net/http"
 	"s3ai-testtask/internal/infrastructure/logger/sl"
 )
-
-type CreateAccountResponse struct {
-	ID string `json:"id"`
-}
 
 func (h *Handler) CreateAccount(w http.ResponseWriter, r *http.Request) {
 	id, err := h.atmService.CreateAccount()
@@ -24,6 +21,21 @@ func (h *Handler) CreateAccount(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) Deposit(w http.ResponseWriter, r *http.Request) {
+	accountId := chi.URLParam(r, "id")
+
+	var req AmountRequest
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
+		return
+	}
+
+	err = h.atmService.Deposit(accountId, req.Amount)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
+	}
 }
 
 func (h *Handler) Withdraw(w http.ResponseWriter, r *http.Request) {
