@@ -14,7 +14,7 @@ func (b *AccountRepository) GetAccount(id string) (interfaces.BankAccount, bool)
 	panic("implement me")
 }
 
-func (b *AccountRepository) CreateAccount() (interfaces.BankAccount, error) {
+func (b *AccountRepository) CreateAccount() (string, error) {
 	//TODO implement me
 	panic("implement me")
 }

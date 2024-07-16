@@ -15,6 +15,6 @@ type ATMService interface {
 
 type AccountRepository interface {
 	GetAccount(id string) (BankAccount, bool)
-	CreateAccount() (BankAccount, error)
+	CreateAccount() (string, error)
 	SaveAccount(account BankAccount)
 }
