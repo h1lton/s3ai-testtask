@@ -8,7 +8,7 @@ type ATMService struct {
 
 func NewATMService(bank *service.BankService) *ATMService {
 	return &ATMService{
-		bank: &service.BankService{},
+		bank: bank,
 	}
 }
 
