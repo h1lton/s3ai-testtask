@@ -20,8 +20,7 @@ func (h *Handler) CreateAccount(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusCreated)
 
-	resp := CreateAccountResponse{ID: id}
-	json.NewEncoder(w).Encode(&resp)
+	json.NewEncoder(w).Encode(CreateAccountResponse{ID: id})
 }
 
 func (h *Handler) Deposit(w http.ResponseWriter, r *http.Request) {
