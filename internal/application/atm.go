@@ -12,6 +12,11 @@ func NewATMService() *ATMService {
 	}
 }
 
+func (A *ATMService) CreateAccount() (string, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
 func (A *ATMService) Deposit(id string, amount float64) error {
 	//TODO implement me
 	panic("implement me")
