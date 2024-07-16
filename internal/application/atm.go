@@ -19,7 +19,7 @@ func (a *ATMService) CreateAccount() (string, error) {
 }
 
 func (a *ATMService) Deposit(accountId string, amount float64) error {
-	return a.bank.Withdraw(accountId, amount)
+	return a.bank.Deposit(accountId, amount)
 }
 
 func (a *ATMService) Withdraw(accountId string, amount float64) error {
