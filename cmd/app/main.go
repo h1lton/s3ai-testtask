@@ -16,6 +16,11 @@ func main() {
 	}
 }
 
+// @title Swagger API
+// @version 1.0
+// @BasePath /
+// @host localhost:8080
+
 // run is the main entry point for the application
 func run() error {
 	// config
