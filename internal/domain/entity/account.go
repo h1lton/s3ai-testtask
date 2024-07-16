@@ -5,7 +5,9 @@ import (
 	"sync"
 )
 
-var LockError = errors.New("another operation is already in progress for this account")
+var ErrLock = errors.New("another operation is already in progress for this account")
+var ErrGreaterThanZero = errors.New("amount must be greater than zero")
+var ErrInsufficientFunds = errors.New("insufficient funds")
 
 type Account struct {
 	id      string
@@ -23,7 +25,7 @@ func NewAccount(id string) *Account {
 func (a *Account) Deposit(amount float64) error {
 	isLock := a.mu.TryLock()
 	if !isLock {
-		return LockError
+		return ErrLock
 	}
 	a.balance += amount
 	a.mu.Unlock()
@@ -33,11 +35,11 @@ func (a *Account) Deposit(amount float64) error {
 func (a *Account) Withdraw(amount float64) error {
 	isLock := a.mu.TryLock()
 	if !isLock {
-		return LockError
+		return ErrLock
 	}
 
 	if amount > a.balance {
-		return errors.New("insufficient funds")
+		return ErrInsufficientFunds
 	}
 
 	a.balance -= amount
@@ -47,6 +49,7 @@ func (a *Account) Withdraw(amount float64) error {
 
 func (a *Account) GetBalance() float64 {
 	a.mu.Lock()
+	balance := a.balance
 	defer a.mu.Unlock()
-	return a.balance
+	return balance
 }
