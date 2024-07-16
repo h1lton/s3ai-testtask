@@ -11,3 +11,7 @@ type ErrorResponse struct {
 type AmountRequest struct {
 	Amount float64 `json:"amount"`
 }
+
+type BalanceResponse struct {
+	Balance float64 `json:"balance"`
+}

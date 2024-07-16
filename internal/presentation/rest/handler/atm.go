@@ -58,4 +58,13 @@ func (h *Handler) Withdraw(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) GetBalance(w http.ResponseWriter, r *http.Request) {
+	accountId := chi.URLParam(r, "id")
+	balance, err := h.atmService.GetBalance(accountId)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
+		return
+	}
+
+	json.NewEncoder(w).Encode(BalanceResponse{Balance: balance})
 }
