@@ -50,11 +50,3 @@ func (a *Account) GetBalance() float64 {
 	defer a.mu.Unlock()
 	return a.balance
 }
-
-func (a *Account) Id() string {
-	return a.id
-}
-
-func (a *Account) SetId(id string) {
-	a.id = id
-}
