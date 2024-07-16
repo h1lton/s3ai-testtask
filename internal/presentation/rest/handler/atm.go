@@ -40,6 +40,21 @@ func (h *Handler) Deposit(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) Withdraw(w http.ResponseWriter, r *http.Request) {
+	accountId := chi.URLParam(r, "id")
+
+	var req AmountRequest
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
+		return
+	}
+
+	err = h.atmService.Withdraw(accountId, req.Amount)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
+	}
 }
 
 func (h *Handler) GetBalance(w http.ResponseWriter, r *http.Request) {
