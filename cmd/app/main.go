@@ -2,6 +2,7 @@ package main
 
 import (
 	"log/slog"
+	"s3ai-testtask/docs"
 	"s3ai-testtask/internal/application"
 	"s3ai-testtask/internal/domain/service"
 	"s3ai-testtask/internal/infrastructure/config"
@@ -19,7 +20,6 @@ func main() {
 // @title Swagger API
 // @version 1.0
 // @BasePath /
-// @host localhost:8080
 
 // run is the main entry point for the application
 func run() error {
@@ -28,6 +28,8 @@ func run() error {
 	if err != nil {
 		return err
 	}
+
+	docs.SwaggerInfo.Host = cfg.Server.Addr
 
 	// logger
 	err = logger.Set(cfg.Env)

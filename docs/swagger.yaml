@@ -20,7 +20,7 @@ definitions:
       error:
         type: string
     type: object
-host: localhost:8081
+host: localhost:8080
 info:
   contact: {}
   title: Swagger API
@@ -90,7 +90,7 @@ paths:
         "204":
           description: No Content
         "400":
-          description: Bad request
+          description: Bad Request
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Deposit
@@ -118,7 +118,7 @@ paths:
         "204":
           description: No Content
         "400":
-          description: Bad request
+          description: Bad Request
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Withdraw
