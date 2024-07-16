@@ -12,21 +12,20 @@ func NewATMService(bank *service.BankService) *ATMService {
 	}
 }
 
+// TODO: implement channels
+
 func (a *ATMService) CreateAccount() (string, error) {
 	return a.bank.CreateAccount()
 }
 
 func (a *ATMService) Deposit(accountId string, amount float64) error {
-	//TODO implement me
-	panic("implement me")
+	return a.bank.Withdraw(accountId, amount)
 }
 
 func (a *ATMService) Withdraw(accountId string, amount float64) error {
-	//TODO implement me
-	panic("implement me")
+	return a.bank.Withdraw(accountId, amount)
 }
 
 func (a *ATMService) GetBalance(accountId string) (float64, error) {
-	//TODO implement me
-	panic("implement me")
+	return a.bank.GetBalance(accountId)
 }
