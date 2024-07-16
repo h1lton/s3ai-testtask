@@ -23,6 +23,10 @@ func NewAccount(id string) *Account {
 }
 
 func (a *Account) Deposit(amount float64) error {
+	if amount <= 0 {
+		return ErrGreaterThanZero
+	}
+
 	isLock := a.mu.TryLock()
 	if !isLock {
 		return ErrLock
@@ -33,6 +37,10 @@ func (a *Account) Deposit(amount float64) error {
 }
 
 func (a *Account) Withdraw(amount float64) error {
+	if amount <= 0 {
+		return ErrGreaterThanZero
+	}
+
 	isLock := a.mu.TryLock()
 	if !isLock {
 		return ErrLock
