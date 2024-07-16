@@ -12,22 +12,22 @@ func NewATMService() *ATMService {
 	}
 }
 
-func (A *ATMService) CreateAccount() (string, error) {
+func (a *ATMService) CreateAccount() (string, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (A *ATMService) Deposit(id string, amount float64) error {
+func (a *ATMService) Deposit(id string, amount float64) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (A *ATMService) Withdraw(id string, amount float64) error {
+func (a *ATMService) Withdraw(id string, amount float64) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (A *ATMService) GetBalance(id string) (float64, error) {
+func (a *ATMService) GetBalance(id string) (float64, error) {
 	//TODO implement me
 	panic("implement me")
 }
