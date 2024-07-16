@@ -13,7 +13,7 @@ type ATMService interface {
 	GetBalance(id string) (float64, error)
 }
 
-type BankRepository interface {
+type AccountRepository interface {
 	GetAccount(id string) (BankAccount, bool)
 	CreateAccount() (BankAccount, error)
 	SaveAccount(account BankAccount)

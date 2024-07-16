@@ -6,10 +6,10 @@ import (
 )
 
 type BankService struct {
-	repo interfaces.BankRepository
+	repo interfaces.AccountRepository
 }
 
-func NewBankService(repo interfaces.BankRepository) *BankService {
+func NewBankService(repo interfaces.AccountRepository) *BankService {
 	return &BankService{
 		repo: repo,
 	}
