@@ -9,17 +9,17 @@ func NewAccountRepository() interfaces.AccountRepository {
 	return &AccountRepository{}
 }
 
-func (b *AccountRepository) GetAccount(id string) (interfaces.BankAccount, bool) {
+func (r *AccountRepository) GetAccount(id string) (interfaces.BankAccount, bool) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (b *AccountRepository) CreateAccount() (string, error) {
+func (r *AccountRepository) CreateAccount() (string, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (b *AccountRepository) SaveAccount(account interfaces.BankAccount) {
+func (r *AccountRepository) SaveAccount(account interfaces.BankAccount) {
 	//TODO implement me
 	panic("implement me")
 }
