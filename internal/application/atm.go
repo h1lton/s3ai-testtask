@@ -6,7 +6,7 @@ type ATMService struct {
 	bank *service.BankService
 }
 
-func NewATMService() *ATMService {
+func NewATMService(bank *service.BankService) *ATMService {
 	return &ATMService{
 		bank: &service.BankService{},
 	}

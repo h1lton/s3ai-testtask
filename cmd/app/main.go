@@ -3,8 +3,10 @@ package main
 import (
 	"log/slog"
 	"s3ai-testtask/internal/application"
+	"s3ai-testtask/internal/domain/service"
 	"s3ai-testtask/internal/infrastructure/config"
 	"s3ai-testtask/internal/infrastructure/logger"
+	"s3ai-testtask/internal/infrastructure/repository/memory"
 	"s3ai-testtask/internal/presentation/rest"
 )
 
@@ -29,7 +31,10 @@ func run() error {
 	}
 
 	// service
-	atmService := application.NewATMService()
+	bankRepo := memory.NewAccountRepository()
+	bankService := service.NewBankService(bankRepo)
+
+	atmService := application.NewATMService(bankService)
 
 	// rest
 	srv, err := rest.NewServer(atmService, cfg)
