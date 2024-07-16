@@ -37,6 +37,8 @@ func (h *Handler) Deposit(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
 	}
+
+	w.WriteHeader(http.StatusNoContent)
 }
 
 func (h *Handler) Withdraw(w http.ResponseWriter, r *http.Request) {
@@ -55,6 +57,8 @@ func (h *Handler) Withdraw(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(ErrorResponse{Error: err.Error()})
 	}
+
+	w.WriteHeader(http.StatusNoContent)
 }
 
 func (h *Handler) GetBalance(w http.ResponseWriter, r *http.Request) {
