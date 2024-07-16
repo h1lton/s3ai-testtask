@@ -13,6 +13,7 @@ func (h *Handler) CreateAccount(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		slog.Error("Error creating account", sl.Err(err))
+		return
 	}
 
 	w.WriteHeader(http.StatusCreated)
