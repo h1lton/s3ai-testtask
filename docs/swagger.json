@@ -1,11 +1,10 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Swagger API",
+        "title": "ATM API",
         "contact": {},
         "version": "1.0"
     },
-    "basePath": "/",
     "paths": {
         "/accounts": {
             "post": {

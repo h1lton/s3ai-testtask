@@ -16,9 +16,8 @@ func main() {
 	}
 }
 
-// @title Swagger API
+// @title ATM API
 // @version 1.0
-// @BasePath /
 
 // run is the main entry point for the application
 func run() error {
