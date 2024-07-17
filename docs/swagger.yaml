@@ -20,7 +20,6 @@ definitions:
       error:
         type: string
     type: object
-host: localhost:8080
 info:
   contact: {}
   title: Swagger API
@@ -37,10 +36,6 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/handler.CreateAccountResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
       summary: create account
       tags:
       - accounts
