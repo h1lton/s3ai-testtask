@@ -2,9 +2,7 @@ package service
 
 import (
 	"errors"
-	"log/slog"
 	"s3ai-testtask/internal/domain/interfaces"
-	"s3ai-testtask/internal/infrastructure/logger/sl"
 )
 
 var NotFoundError = errors.New("account not found")
@@ -19,14 +17,8 @@ func NewBankService(repo interfaces.AccountRepository) *BankService {
 	}
 }
 
-func (s *BankService) CreateAccount() (string, error) {
-	accountId, err := s.repo.CreateAccount()
-	if err != nil {
-		slog.Error("Error creating account in repository", sl.Err(err))
-		return "", errors.New("account creation failed")
-	}
-
-	return accountId, nil
+func (s *BankService) CreateAccount() string {
+	return s.repo.CreateAccount()
 }
 
 func (s *BankService) Deposit(accountId string, amount float64) error {

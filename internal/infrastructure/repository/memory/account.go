@@ -26,7 +26,7 @@ func (r *AccountRepository) GetAccount(id string) (interfaces.BankAccount, bool)
 	return account, ok
 }
 
-func (r *AccountRepository) CreateAccount() (string, error) {
+func (r *AccountRepository) CreateAccount() string {
 	r.mu.Lock()
 	var id string
 	for {
@@ -39,5 +39,5 @@ func (r *AccountRepository) CreateAccount() (string, error) {
 	r.accounts[id] = entity.NewAccount(id)
 	r.mu.Unlock()
 
-	return id, nil
+	return id
 }

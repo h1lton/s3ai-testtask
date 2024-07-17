@@ -14,7 +14,7 @@ func NewATMService(bank *service.BankService) *ATMService {
 
 // TODO: implement channels
 
-func (a *ATMService) CreateAccount() (string, error) {
+func (a *ATMService) CreateAccount() string {
 	return a.bank.CreateAccount()
 }
 

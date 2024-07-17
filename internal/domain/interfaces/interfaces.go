@@ -7,7 +7,7 @@ type BankAccount interface {
 }
 
 type ATMService interface {
-	CreateAccount() (string, error)
+	CreateAccount() string
 	Deposit(id string, amount float64) error
 	Withdraw(id string, amount float64) error
 	GetBalance(id string) (float64, error)
@@ -15,5 +15,5 @@ type ATMService interface {
 
 type AccountRepository interface {
 	GetAccount(id string) (BankAccount, bool)
-	CreateAccount() (string, error)
+	CreateAccount() string
 }
